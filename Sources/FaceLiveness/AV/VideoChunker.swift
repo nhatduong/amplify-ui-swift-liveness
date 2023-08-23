@@ -17,7 +17,8 @@ final class VideoChunker {
     let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
     var startTimeSeconds: Double?
     var provideSingleFrame: ((UIImage) -> Void)?
-
+    private let recordingClipQueue = DispatchQueue(label: "com.example.recordingClipQueue")
+    
     init(
         assetWriter: AVAssetWriter,
         assetWriterDelegate: AssetWriterDelegate,
@@ -67,16 +68,21 @@ final class VideoChunker {
             return
         }
 
-        if assetWriterInput.isReadyForMoreMediaData {
-            let timestamp = CMSampleBufferGetPresentationTimeStamp(buffer).seconds
-            let presentationTime = CMTime(seconds: timestamp - startTimeSeconds, preferredTimescale: 600)
-            guard let rotated = buffer.rotateRightUpMirrored() else { return }
+        assetWriterInput.requestMediaDataWhenReady(on: recordingClipQueue) {
+            while videoWriterInput.isReadyForMoreMediaData {
+                let timestamp = CMSampleBufferGetPresentationTimeStamp(buffer).seconds
+                let presentationTime = CMTime(seconds: timestamp - startTimeSeconds, preferredTimescale: 600)
+                guard let rotated = buffer.rotateRightUpMirrored() else { return }
 
-            pixelBufferAdaptor.append(
-                rotated,
-                withPresentationTime: presentationTime
-            )
+                pixelBufferAdaptor.append(
+                    rotated,
+                    withPresentationTime: presentationTime
+                )
+            }
         }
+        // if assetWriterInput.isReadyForMoreMediaData {
+            
+        // }
     }
 
     private func singleFrame(from buffer: CVPixelBuffer) -> UIImage {
