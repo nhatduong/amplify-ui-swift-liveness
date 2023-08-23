@@ -35,10 +35,11 @@ final class VideoChunker {
     func start() {
         guard state == .pending else { return }
         state = .writing
-        guard assetWriter.startWriting() else {
-            print("Video file writer not ready to write file.")
-            return
-        }
+        assetWriter.startWriting()
+        // guard assetWriter.startWriting() else {
+        //     print("Video file writer not ready to write file.")
+        //     return
+        // }
         assetWriter.startSession(atSourceTime: .zero)
     }
 
