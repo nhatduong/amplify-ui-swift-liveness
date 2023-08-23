@@ -69,7 +69,7 @@ final class VideoChunker {
         }
 
         assetWriterInput.requestMediaDataWhenReady(on: recordingClipQueue) {
-            while videoWriterInput.isReadyForMoreMediaData {
+            while assetWriterInput.isReadyForMoreMediaData {
                 let timestamp = CMSampleBufferGetPresentationTimeStamp(buffer).seconds
                 let presentationTime = CMTime(seconds: timestamp - startTimeSeconds, preferredTimescale: 600)
                 guard let rotated = buffer.rotateRightUpMirrored() else { return }
