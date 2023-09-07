@@ -10,7 +10,6 @@
 		90236C77299D6D41009FD1A7 /* HostAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90236C76299D6D40009FD1A7 /* HostAppApp.swift */; };
 		90493F822992D64000CFE674 /* LivenessResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90493F812992D64000CFE674 /* LivenessResult.swift */; };
 		904CC73D2996E650002E0753 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904CC73C2996E650002E0753 /* RootView.swift */; };
-		906AB82029E9F0E9007FFC81 /* FaceLiveness in Frameworks */ = {isa = PBXBuildFile; productRef = 906AB81F29E9F0E9007FFC81 /* FaceLiveness */; };
 		906AB82229E9F432007FFC81 /* View+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AB82129E9F432007FFC81 /* View+Background.swift */; };
 		906AB82429E9F48C007FFC81 /* StartSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AB82329E9F48C007FFC81 /* StartSessionView.swift */; };
 		906AB82629E9F554007FFC81 /* Color+DynamicColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AB82529E9F554007FFC81 /* Color+DynamicColors.swift */; };
@@ -85,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				906AB82029E9F0E9007FFC81 /* FaceLiveness in Frameworks */,
 				9077AB3729E5D28900433155 /* AWSAPIPlugin in Frameworks */,
 				9077AB3B29E5D28900433155 /* Amplify in Frameworks */,
 				9077AB3929E5D28900433155 /* AWSCognitoAuthPlugin in Frameworks */,
@@ -225,7 +223,6 @@
 				9077AB3629E5D28900433155 /* AWSAPIPlugin */,
 				9077AB3829E5D28900433155 /* AWSCognitoAuthPlugin */,
 				9077AB3A29E5D28900433155 /* Amplify */,
-				906AB81F29E9F0E9007FFC81 /* FaceLiveness */,
 			);
 			productName = HostApp;
 			productReference = 9070FFA0285112B4009867D5 /* HostApp.app */;
@@ -301,7 +298,6 @@
 			mainGroup = 9070FF97285112B4009867D5;
 			packageReferences = (
 				9077AB3529E5D28900433155 /* XCRemoteSwiftPackageReference "amplify-swift" */,
-				906AB81E29E9F0E9007FFC81 /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */,
 			);
 			productRefGroup = 9070FFA1285112B4009867D5 /* Products */;
 			projectDirPath = "";
@@ -696,30 +692,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		906AB81E29E9F0E9007FFC81 /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/amplify-ui-swift-liveness";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		9077AB3529E5D28900433155 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = versionRange;
+				maximumVersion = 2.8.1;
 				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		906AB81F29E9F0E9007FFC81 /* FaceLiveness */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 906AB81E29E9F0E9007FFC81 /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
-			productName = FaceLiveness;
-		};
 		9077AB3629E5D28900433155 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9077AB3529E5D28900433155 /* XCRemoteSwiftPackageReference "amplify-swift" */;
